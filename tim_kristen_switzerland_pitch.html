@@ -1,256 +1,57 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tim & Kristen’s Switzerland: Lake, River, Mountains, Train</title>
-  <style>
-    :root {
-      --ink: #253238;
-      --muted: #65747b;
-      --bg: #f7f2ea;
-      --card: #fffaf2;
-      --blue: #2f6f8f;
-      --green: #456f52;
-      --gold: #b8863b;
-      --line: rgba(37,50,56,.16);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: ui-serif, Georgia, "Times New Roman", serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(47,111,143,.18), transparent 34rem),
-        radial-gradient(circle at bottom right, rgba(69,111,82,.16), transparent 30rem),
-        var(--bg);
-      line-height: 1.55;
-    }
-    header {
-      padding: 6rem 1.25rem 4rem;
-      text-align: center;
-      color: white;
-      background:
-        linear-gradient(rgba(15,34,44,.45), rgba(15,34,44,.55)),
-        url("https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1800&q=80") center/cover;
-    }
-    header h1 {
-      font-size: clamp(2.4rem, 7vw, 5.2rem);
-      line-height: .95;
-      margin: 0 auto 1rem;
-      max-width: 960px;
-      text-shadow: 0 2px 18px rgba(0,0,0,.35);
-    }
-    header p {
-      font-size: clamp(1.1rem, 2.2vw, 1.55rem);
-      max-width: 760px;
-      margin: 0 auto;
-      text-shadow: 0 1px 12px rgba(0,0,0,.35);
-    }
-    main { max-width: 1120px; margin: 0 auto; padding: 2rem 1rem 5rem; }
-    .intro {
-      margin: -3.5rem auto 2rem;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      box-shadow: 0 18px 48px rgba(37,50,56,.14);
-      padding: clamp(1.25rem, 3vw, 2.25rem);
-      max-width: 900px;
-      text-align: center;
-    }
-    .intro h2 { margin: 0 0 .5rem; font-size: 2rem; }
-    .intro p { margin: .4rem auto; max-width: 760px; color: var(--muted); font-size: 1.1rem; }
-    .pillrow { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1.2rem; }
-    .pill {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: .45rem .8rem;
-      background: white;
-      color: var(--green);
-      font-weight: 700;
-      font-size: .95rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-    .card {
-      background: rgba(255,250,242,.92);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 12px 30px rgba(37,50,56,.08);
-    }
-    .card img { width: 100%; height: 180px; object-fit: cover; display:block; }
-    .card .body { padding: 1rem; }
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: .09em;
-      font-size: .75rem;
-      font-weight: 800;
-      margin-bottom: .2rem;
-      font-family: ui-sans-serif, system-ui, sans-serif;
-    }
-    h3 { margin: .15rem 0 .45rem; font-size: 1.45rem; }
-    .card p { margin: 0; color: var(--muted); }
-    section {
-      background: rgba(255,250,242,.72);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: clamp(1.2rem, 3vw, 2rem);
-      margin: 1.2rem 0;
-    }
-    section h2 { margin-top: 0; font-size: 2rem; color: var(--blue); }
-    .timeline {
-      display: grid;
-      gap: .85rem;
-    }
-    .day {
-      display: grid;
-      grid-template-columns: 135px 1fr;
-      gap: 1rem;
-      border-top: 1px solid var(--line);
-      padding-top: .85rem;
-    }
-    .day:first-child { border-top: none; padding-top: 0; }
-    .date { font-weight: 800; color: var(--green); font-family: ui-sans-serif, system-ui, sans-serif; }
-    .day strong { font-size: 1.1rem; }
-    .note {
-      background: rgba(47,111,143,.09);
-      border-left: 5px solid var(--blue);
-      padding: 1rem 1.15rem;
-      border-radius: 14px;
-      margin: 1rem 0;
-    }
-    .hikes {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 1rem;
-    }
-    .hike {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 1rem;
-    }
-    .hike h4 { margin: 0 0 .35rem; font-size: 1.15rem; }
-    .hike p { margin: 0; color: var(--muted); }
-    .close {
-      text-align: center;
-      font-size: 1.25rem;
-      max-width: 820px;
-      margin: 2.2rem auto 0;
-      color: var(--ink);
-    }
-    @media (max-width: 900px) {
-      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .hikes { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 620px) {
-      header { padding-top: 4rem; }
-      .grid { grid-template-columns: 1fr; }
-      .day { grid-template-columns: 1fr; gap: .25rem; }
-      .card img { height: 220px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Switzerland: River, Alps, Golden Train</title>
+<style>
+:root{--ink:#17252c;--muted:#5d6c73;--paper:#fbf6ea;--card:#fffaf1;--blue:#245f7d;--green:#315f48;--gold:#b78636;--line:rgba(23,37,44,.16);--shadow:0 24px 70px rgba(23,37,44,.18)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 10% 5%,rgba(36,95,125,.20),transparent 32rem),radial-gradient(circle at 85% 20%,rgba(183,134,54,.16),transparent 28rem),linear-gradient(#f8f1e4,#efe8db);font-family:ui-serif,Georgia,Cambria,"Times New Roman",serif;line-height:1.55}
+.hero{min-height:88vh;display:grid;place-items:end center;padding:2rem;color:white;background:linear-gradient(180deg,rgba(5,15,22,.16),rgba(5,15,22,.74)),url("https://source.unsplash.com/1800x1200/?switzerland,alps,train") center/cover}
+.hero-inner{width:min(1100px,100%);margin-bottom:5vh}.kicker{font:800 .85rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#f1d59d;margin-bottom:1rem}
+h1{font-size:clamp(3rem,9vw,7.8rem);line-height:.86;letter-spacing:-.06em;margin:0 0 1.2rem;text-shadow:0 4px 30px rgba(0,0,0,.42)}
+.hero p{font-size:clamp(1.15rem,2.4vw,1.75rem);max-width:780px;margin:0;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+nav{position:sticky;top:0;z-index:5;display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;padding:.75rem;background:rgba(251,246,234,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);font-family:ui-sans-serif,system-ui,sans-serif}
+nav a{text-decoration:none;font-weight:800;font-size:.9rem;padding:.55rem .8rem;border-radius:999px;color:var(--green)}nav a:hover{background:rgba(49,95,72,.10)}
+main{width:min(1180px,calc(100% - 2rem));margin:0 auto}
+section{margin:1.2rem 0;padding:clamp(1.2rem,4vw,2.4rem);background:rgba(255,250,241,.78);border:1px solid var(--line);border-radius:34px}
+.manifesto{margin:-4rem auto 2rem;position:relative;z-index:2;background:rgba(255,250,241,.95);box-shadow:var(--shadow);display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center}
+h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1;letter-spacing:-.04em;margin:0 0 1rem}.section-lede,.manifesto p{font-size:1.16rem;color:var(--muted);max-width:860px}.pillbox{display:grid;gap:.7rem;font-family:ui-sans-serif,system-ui,sans-serif}.pill{background:white;border:1px solid var(--line);border-radius:20px;padding:.9rem 1rem;font-weight:850;color:var(--green);box-shadow:0 6px 20px rgba(23,37,44,.06)}
+.places{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:2rem 0 1rem}.place{min-height:420px;border-radius:30px;padding:1.2rem;color:white;display:flex;flex-direction:column;justify-content:end;overflow:hidden;position:relative;isolation:isolate;box-shadow:0 18px 48px rgba(23,37,44,.16);background:linear-gradient(135deg,#245f7d,#315f48)}
+.place:before{content:"";position:absolute;inset:0;background:var(--img) center/cover;z-index:-2;transform:scale(1.03)}.place:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 18%,rgba(0,0,0,.78));z-index:-1}
+.days{color:#f1d59d;font:850 .8rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.13em;text-transform:uppercase;margin-bottom:.4rem}.place h3{font-size:2rem;margin:0 0 .25rem;line-height:1}.place p{margin:0}
+.timeline{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:.55rem;margin-top:1.4rem;font-family:ui-sans-serif,system-ui,sans-serif}.tile{min-height:142px;border-radius:22px;border:1px solid var(--line);background:white;padding:.85rem;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 10px 26px rgba(23,37,44,.07)}.date{font-weight:900;color:var(--gold);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em}.where{font-weight:900;color:var(--blue)}.what{color:var(--muted);font-size:.88rem}
+.wide{display:grid;grid-template-columns:.9fr 1.1fr;gap:1.4rem;align-items:stretch}.photo-panel{min-height:440px;border-radius:28px;background:linear-gradient(135deg,#245f7d,#315f48),var(--img) center/cover;background-blend-mode:multiply,normal;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),0 18px 42px rgba(23,37,44,.15)}
+.copy-card{background:white;border:1px solid var(--line);border-radius:28px;padding:clamp(1.1rem,3vw,2rem);box-shadow:0 14px 32px rgba(23,37,44,.07)}.copy-card h3{margin-top:0;font-size:2rem;line-height:1.05}.copy-card li{margin:.45rem 0;color:var(--muted)}
+.hike-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.2rem}.hike{border-radius:26px;overflow:hidden;background:white;border:1px solid var(--line);box-shadow:0 12px 30px rgba(23,37,44,.07)}.hike-img{height:190px;background:linear-gradient(135deg,#245f7d,#315f48),var(--img) center/cover;background-blend-mode:multiply,normal}.hike-body{padding:1rem}.hike h3{margin:0 0 .25rem;font-size:1.35rem}.hike p{margin:0;color:var(--muted)}
+.badges{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.8rem;font-family:ui-sans-serif,system-ui,sans-serif}.badge{border-radius:999px;padding:.3rem .55rem;background:rgba(36,95,125,.10);color:var(--blue);font-weight:800;font-size:.78rem}
+.quote{font-size:clamp(1.6rem,4vw,3rem);line-height:1.08;text-align:center;max-width:960px;margin:0 auto;color:var(--green)}.footer{padding:4rem 1rem 5rem;text-align:center;color:var(--muted);font-family:ui-sans-serif,system-ui,sans-serif}
+@media(max-width:980px){.manifesto,.wide{grid-template-columns:1fr}.places{grid-template-columns:repeat(2,minmax(0,1fr))}.timeline{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:640px){.hero{min-height:78vh;padding:1rem}.manifesto{margin-top:-2rem}.places,.hike-grid{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.place{min-height:340px}nav{justify-content:start;overflow-x:auto;flex-wrap:nowrap}nav a{white-space:nowrap}}
+</style>
 </head>
 <body>
-  <header>
-    <h1>Lake. River. Mountains. Train.</h1>
-    <p>A Switzerland trip built around beauty, easy hikes, romance, and not turning vacation into a logistics endurance sport.</p>
-  </header>
-
-  <main>
-    <div class="intro">
-      <h2>The idea</h2>
-      <p>Not a checklist. Not a forced march. A trip where each place has a reason: Bern for the Aare, Grindelwald for “holy shit” hikes, Vevey for lakefront romance, and Zurich for one last night before home.</p>
-      <div class="pillrow">
-        <span class="pill">Aare float</span>
-        <span class="pill">4 mountain nights</span>
-        <span class="pill">GoldenPass day</span>
-        <span class="pill">No mandatory cliff cable car</span>
-        <span class="pill">Night-owl friendly</span>
-      </div>
-    </div>
-
-    <div class="grid">
-      <article class="card">
-        <img alt="Bern old town and Aare River" src="https://images.unsplash.com/photo-1603104735765-6d15149c443c?auto=format&fit=crop&w=900&q=80">
-        <div class="body">
-          <div class="eyebrow">Aug 8–11</div>
-          <h3>Bern</h3>
-          <p>The river city. Arcades, old town, evening wandering, and the Aare float as the first real “we are in Switzerland” moment.</p>
-        </div>
-      </article>
-      <article class="card">
-        <img alt="Grindelwald mountain village" src="https://images.unsplash.com/photo-1566487097168-e91a4f38bee2?auto=format&fit=crop&w=900&q=80">
-        <div class="body">
-          <div class="eyebrow">Aug 11–15</div>
-          <h3>Grindelwald</h3>
-          <p>Four nights because this is the trailhead, not just a town: short hikes, huge views, weather flexibility, and mountain days without backpacking.</p>
-        </div>
-      </article>
-      <article class="card">
-        <img alt="Lake Geneva near Vevey and Montreux" src="https://images.unsplash.com/photo-1550503736-c1a2c9033c03?auto=format&fit=crop&w=900&q=80">
-        <div class="body">
-          <div class="eyebrow">Aug 15–16</div>
-          <h3>Vevey</h3>
-          <p>Lake Geneva, wine, promenade, cafés, and a softer romantic landing after the Alps. More “us” than a big resort checklist.</p>
-        </div>
-      </article>
-      <article class="card">
-        <img alt="Zurich old town at night" src="https://images.unsplash.com/photo-1597088194665-5e62e8d77af2?auto=format&fit=crop&w=900&q=80">
-        <div class="body">
-          <div class="eyebrow">Aug 16–17</div>
-          <h3>Zurich</h3>
-          <p>Not an airport panic night. A late dinner, drinks, a real final evening, then fly home.</p>
-        </div>
-      </article>
-    </div>
-
-    <section>
-      <h2>The calendar</h2>
-      <div class="timeline">
-        <div class="day"><div class="date">Aug 7</div><div><strong>Fly Providence → Zurich.</strong><br>Overnight travel. No big plan required yet.</div></div>
-        <div class="day"><div class="date">Aug 8</div><div><strong>Arrive Zurich, train to Bern.</strong><br>Check in, nap if needed, easy first dinner, river views.</div></div>
-        <div class="day"><div class="date">Aug 9</div><div><strong>Bern old town day.</strong><br>Arcades, Rosengarten, Aare views, cafés, no hard schedule.</div></div>
-        <div class="day"><div class="date">Aug 10</div><div><strong>Aare float day.</strong><br>Weather and safety permitting. This is the “local Switzerland” day.</div></div>
-        <div class="day"><div class="date">Aug 11</div><div><strong>Bern → Grindelwald.</strong><br>Arrive in the mountains. No need to hike hard on move day.</div></div>
-        <div class="day"><div class="date">Aug 12–14</div><div><strong>Three full mountain days.</strong><br>Pick hikes based on weather and mood. See the list below.</div></div>
-        <div class="day"><div class="date">Aug 15</div><div><strong>GoldenPass day to Vevey.</strong><br>The romantic scenic train day: mountains to Lake Geneva.</div></div>
-        <div class="day"><div class="date">Aug 16</div><div><strong>Vevey morning, Zurich evening.</strong><br>Lake walk, maybe vineyards, then a late Zurich night.</div></div>
-        <div class="day"><div class="date">Aug 17</div><div><strong>Fly home.</strong><br>Dog pickup on the 18th. Reality resumes.</div></div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Why four nights in Grindelwald makes sense</h2>
-      <p>Because it is not four nights “in a town.” It is four nights in a national-park-style hiking base where each day can be short, flexible, and visually huge.</p>
-      <div class="note">
-        The goal is not strenuous hiking. The goal is: train or gondola to the good part, walk a manageable distance, see something ridiculous, eat well, come back happy.
-      </div>
-      <div class="hikes">
-        <div class="hike"><h4>Männlichen → Kleine Scheidegg</h4><p>Classic big-view walk. Eiger, Mönch, Jungfrau. Gentle, iconic, not a death march.</p></div>
-        <div class="hike"><h4>Bachalpsee</h4><p>The alpine lake reflection hike. Famous for a reason. Short enough to be fun, big enough to feel earned.</p></div>
-        <div class="hike"><h4>Lauterbrunnen Valley</h4><p>Waterfalls, cliffs, meadows. More valley walk than mountain conquest.</p></div>
-        <div class="hike"><h4>Jungfraujoch, if weather is perfect</h4><p>Not mandatory, not booked blindly. If the sky is clear, this becomes the unforgettable “Top of Europe” day.</p></div>
-      </div>
-    </section>
-
-    <section>
-      <h2>The Kristen-safe design</h2>
-      <p>This route avoids making a high exposed cable car the price of admission to a hotel. Cable cars can remain optional, mood-based, and weather-based.</p>
-      <p>It still gives the romance of Swiss trains, lakefront evenings, river swimming, and Alpine hiking — without forcing every day to be a courage test.</p>
-    </section>
-
-    <section>
-      <h2>The sell</h2>
-      <p class="close">This trip has a story: arrive in the river city, float the Aare, move into the Alps for four days of manageable “holy shit” hikes, ride a beautiful train to Lake Geneva, and end with one last late night in Zurich.</p>
-      <p class="close"><strong>It is Switzerland as a vacation, not Switzerland as homework.</strong></p>
-    </section>
-  </main>
-</body>
-</html>
+<header class="hero"><div class="hero-inner"><div class="kicker">Switzerland · August 7–17</div><h1>River, Alps, Golden Train</h1><p>A romantic, outdoorsy Switzerland trip with short “holy shit” hikes, the Aare float, a panoramic train day, Lake Geneva, and one last late night in Zurich.</p></div></header>
+<nav><a href="#shape">Shape</a><a href="#calendar">Calendar</a><a href="#hikes">Hikes</a><a href="#train">GoldenPass</a><a href="#why">Why this works</a></nav>
+<main>
+<section id="shape" class="manifesto"><div><h2>This is not “see Switzerland.”</h2><p>This is a trip with a story: start in Bern with the turquoise Aare, settle into the Bernese Alps for four nights of manageable hikes, then ride the GoldenPass down to Lake Geneva before a proper Zurich finale.</p><p>It keeps the famous Swiss romance — trains, mountains, lake towns, old streets, outdoor cafés — without turning every day into a transfer day.</p></div><div class="pillbox"><div class="pill">3 nights · Bern + Aare float</div><div class="pill">4 nights · Grindelwald hiking base</div><div class="pill">1 scenic rail day · GoldenPass</div><div class="pill">1 night · Vevey lakefront</div><div class="pill">1 night · Zurich after dark</div></div></section>
+<div class="places">
+<article class="place" style='--img:url("https://source.unsplash.com/900x1200/?bern,aare,switzerland")'><div class="days">Aug 8–11</div><h3>Bern</h3><p>Arcades, river bends, old town evenings, and the Aare float.</p></article>
+<article class="place" style='--img:url("https://source.unsplash.com/900x1200/?grindelwald,switzerland")'><div class="days">Aug 11–15</div><h3>Grindelwald</h3><p>The hiking base: trails, glaciers, meadows, and huge alpine views.</p></article>
+<article class="place" style='--img:url("https://source.unsplash.com/900x1200/?goldenpass,switzerland,train")'><div class="days">Aug 15</div><h3>GoldenPass</h3><p>The special train day: mountain country to Lake Geneva.</p></article>
+<article class="place" style='--img:url("https://source.unsplash.com/900x1200/?vevey,lake-geneva,switzerland")'><div class="days">Aug 15–16</div><h3>Vevey</h3><p>Lakefront, wine terraces, promenade, and a softer landing after the Alps.</p></article>
+</div>
+<section id="calendar"><h2>The calendar</h2><p class="section-lede">Enough structure to feel confident. Enough slack to pick hikes by weather instead of forcing the mountains to obey a spreadsheet.</p><div class="timeline">
+<div class="tile"><div class="date">Aug 7</div><div class="where">Fly</div><div class="what">Providence → Zurich overnight.</div></div><div class="tile"><div class="date">Aug 8</div><div class="where">Bern</div><div class="what">Arrive, train to Bern, easy first dinner.</div></div><div class="tile"><div class="date">Aug 9</div><div class="where">Bern</div><div class="what">Old town, Rosengarten, river views.</div></div><div class="tile"><div class="date">Aug 10</div><div class="where">Aare</div><div class="what">Float day if weather and river conditions cooperate.</div></div><div class="tile"><div class="date">Aug 11</div><div class="where">Grindelwald</div><div class="what">Move into the Alps. No big hike required.</div></div><div class="tile"><div class="date">Aug 12</div><div class="where">Alps</div><div class="what">First full hiking day.</div></div><div class="tile"><div class="date">Aug 13</div><div class="where">Alps</div><div class="what">Second hike or Jungfraujoch if sky is perfect.</div></div><div class="tile"><div class="date">Aug 14</div><div class="where">Alps</div><div class="what">Third hike, valley walk, or recovery day.</div></div><div class="tile"><div class="date">Aug 15</div><div class="where">GoldenPass</div><div class="what">Scenic train to Vevey / Lake Geneva.</div></div><div class="tile"><div class="date">Aug 16–17</div><div class="where">Zurich</div><div class="what">Late final night, then fly home.</div></div>
+</div></section>
+<section id="hikes"><h2>Four nights in Grindelwald is the point.</h2><p class="section-lede">This is the Swiss version of a great national park base: you do not need long, brutal hikes to see amazing things. You use trains and lifts to reach the good stuff, then walk the beautiful part.</p><div class="hike-grid">
+<article class="hike"><div class="hike-img" style='--img:url("https://source.unsplash.com/1000x700/?mannlichen,kleine-scheidegg,eiger")'></div><div class="hike-body"><h3>Männlichen → Kleine Scheidegg</h3><p>The classic big-view walk: Eiger, Mönch, Jungfrau, meadows, and constant scenery.</p><div class="badges"><span class="badge">easy/moderate</span><span class="badge">big views</span><span class="badge">not long</span></div></div></article>
+<article class="hike"><div class="hike-img" style='--img:url("https://source.unsplash.com/1000x700/?bachalpsee,switzerland")'></div><div class="hike-body"><h3>Bachalpsee</h3><p>The famous reflection lake above Grindelwald. A manageable hike with a postcard payoff.</p><div class="badges"><span class="badge">alpine lake</span><span class="badge">iconic</span><span class="badge">weather dependent</span></div></div></article>
+<article class="hike"><div class="hike-img" style='--img:url("https://source.unsplash.com/1000x700/?lauterbrunnen,valley,waterfalls")'></div><div class="hike-body"><h3>Lauterbrunnen Valley</h3><p>Waterfalls, cliffs, meadows, villages. More “walk through a dream valley” than mountain conquest.</p><div class="badges"><span class="badge">waterfalls</span><span class="badge">valley walk</span><span class="badge">low stress</span></div></div></article>
+<article class="hike"><div class="hike-img" style='--img:url("https://source.unsplash.com/1000x700/?jungfraujoch,glacier,switzerland")'></div><div class="hike-body"><h3>Jungfraujoch, if the sky is clear</h3><p>Not something to book blindly. If the weather is spectacular, this becomes the once-in-a-trip glacier day.</p><div class="badges"><span class="badge">premium day</span><span class="badge">clear weather only</span><span class="badge">Top of Europe</span></div></div></article>
+</div></section>
+<section id="train"><div class="wide"><div class="photo-panel" style='--img:url("https://source.unsplash.com/1100x900/?switzerland,panoramic,train")'></div><div class="copy-card"><h3>The GoldenPass is the elegant train day.</h3><p>It belongs in this itinerary because it connects the mountains to Lake Geneva instead of dragging the whole trip to a far corner of the country.</p><ul><li>Feels special without consuming multiple days.</li><li>Gives you the romantic panoramic train experience.</li><li>Leaves the Bernina Express for a future “Switzerland II” trip instead of cramming.</li><li>Pairs beautifully with a Vevey lakefront night.</li></ul></div></div></section>
+<section id="why"><div class="wide"><div class="copy-card"><h3>It has variety without chaos.</h3><ul><li><strong>Bern:</strong> culture, river, evening wandering.</li><li><strong>Grindelwald:</strong> a real mountain base with multiple short-hike options.</li><li><strong>GoldenPass:</strong> the “we came to Switzerland for trains” day.</li><li><strong>Vevey:</strong> lakefront romance and wine country texture.</li><li><strong>Zurich:</strong> one last night out before the flight.</li></ul></div><div class="photo-panel" style='--img:url("https://source.unsplash.com/1100x900/?lake-geneva,vineyards,switzerland")'></div></div></section>
+<section><p class="quote">A river you can float, mountains you can actually walk, a train day worth dressing up for, and a lakefront ending.</p></section>
+</main><div class="footer">Made for Tim & Kristen · Switzerland 2026</div>
+</body></html>
